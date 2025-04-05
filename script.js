@@ -147,18 +147,17 @@ function showMessage(messageId, text) {
     message.style.left = `${messageX}px`;
     message.style.top = `${messageY}px`;
     message.style.transform = 'translate(-50%, -100%) scale(1)';
-    message.setAttribute('data-x', 0);
-    message.setAttribute('data-y', 0);
     
     createLoveParticles(
         message.getBoundingClientRect().left + message.offsetWidth / 2,
         message.getBoundingClientRect().top + message.offsetHeight / 2
     );
     
+    // Aumenta il tempo di visualizzazione del messaggio
     setTimeout(() => {
         message.classList.remove('show');
         message.classList.add('hide');
-    }, 3000);
+    }, 4000); // Aumentato da 3000 a 4000ms
 }
 
 let messageCount = 0;
@@ -173,7 +172,8 @@ function showRandomCatMessage() {
         const messages = [
             "LARA NUN MOLLA",
             "SALUTAMI SCOOBY",
-            "TUTTO FVESCO"
+            "TUTTO FVESCO",
+            "💞"
         ];
         message = messages[Math.floor(Math.random() * messages.length)];
     }
