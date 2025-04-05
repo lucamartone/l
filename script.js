@@ -106,22 +106,6 @@ interact('.cat')
         updateZoom();
     });
 
-// Inizializza il drag and drop per i messaggi
-interact('.message')
-    .draggable({
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: 'parent',
-                endOnly: true
-            })
-        ],
-        autoScroll: true,
-        listeners: {
-            move: dragMoveListener
-        }
-    });
-
 function dragMoveListener(event) {
     const target = event.target;
     const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
