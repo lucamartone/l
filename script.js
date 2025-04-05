@@ -1,88 +1,52 @@
-// Inizializza particles.js con tema più naturale
-particlesJS({
-    particles: {
-        number: { value: 30, density: { enable: true, value_area: 800 } },
-        color: { value: ["#ffffff", "#f0f0f0", "#e0e0e0"] },
-        shape: { 
-            type: ["circle"],
-            stroke: { width: 0, color: "#000000" }
-        },
-        opacity: {
-            value: 0.3,
-            random: true,
-            animation: { 
-                enable: true, 
-                speed: 1, 
-                minimumValue: 0.1, 
-                sync: false 
-            }
-        },
-        size: {
-            value: 2,
-            random: true,
-            animation: { 
-                enable: true, 
-                speed: 2, 
-                minimumValue: 0.1, 
-                sync: false 
-            }
-        },
-        line_linked: {
-            enable: true,
-            distance: 200,
-            color: "#ffffff",
-            opacity: 0.1,
-            width: 1
-        },
-        move: {
-            enable: true,
-            speed: 0.5,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: {
-                enable: true,
-                rotateX: 600,
-                rotateY: 1200
-            }
-        }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: {
-            onhover: { 
-                enable: true, 
-                mode: "repulse"
-            },
-            onclick: { 
-                enable: true, 
-                mode: "push"
-            },
-            resize: true
-        }
-    },
-    retina_detect: true,
-    background: {
-        color: "#f5f5f5",
-        image: "",
-        position: "50% 50%",
-        repeat: "no-repeat",
-        size: "cover"
-    }
+// Array di messaggi per l'alieno
+const alienMessages = [
+    "LARA NUN MOLLA",
+    "SALUTAMI SCOOBY",
+    "TUTTO FVESCO",
+    "💞"
+];
+
+// Gestore degli eventi per l'alieno
+const alien = document.querySelector('.cat');
+alien.addEventListener('click', showRandomAlienMessage);
+alien.addEventListener('dblclick', function(event) {
+    event.preventDefault();
+    currentZoom = 1;
+    updateZoom();
 });
 
-// Aggiungo solo i gestori per tap e doubletap
-interact('.cat')
-    .on('tap', function(event) {
-        showRandomCatMessage();
-    })
-    .on('doubletap', function(event) {
-        event.preventDefault();
-        currentZoom = 1;
-        updateZoom();
-    });
+function showRandomAlienMessage() {
+    const message = document.createElement('div');
+    message.className = 'message';
+    message.textContent = alienMessages[Math.floor(Math.random() * alienMessages.length)];
+    
+    const messagesContainer = document.querySelector('.messages-container') || createMessagesContainer();
+    messagesContainer.appendChild(message);
+    
+    // Calcola una posizione casuale sullo schermo
+    const containerWidth = messagesContainer.clientWidth;
+    const containerHeight = messagesContainer.clientHeight;
+    const messageWidth = message.offsetWidth;
+    const messageHeight = message.offsetHeight;
+    
+    // Genera posizioni casuali
+    const randomX = Math.floor(Math.random() * (containerWidth - messageWidth));
+    const randomY = Math.floor(Math.random() * (containerHeight - messageHeight));
+    
+    message.style.left = `${randomX}px`;
+    message.style.top = `${randomY}px`;
+    
+    setTimeout(() => {
+        message.classList.add('show');
+    }, 50);
+}
+
+function createMessagesContainer() {
+    const container = document.createElement('div');
+    container.className = 'messages-container';
+    document.body.appendChild(container);
+    return container;
+}
 
 function dragMoveListener(event) {
     const target = event.target;
@@ -151,7 +115,7 @@ function showRandomCatMessage() {
             "LARA NUN MOLLA",
             "SALUTAMI SCOOBY",
             "TUTTO FVESCO",
-            "💞"
+            "♥️"
         ];
         message = messages[Math.floor(Math.random() * messages.length)];
     }
