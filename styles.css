@@ -1,18 +1,21 @@
 * {
-    touch-action: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
 body {
     margin: 0;
-    height: 100vh;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #0a0a1a 100%);
-    font-family: 'Dancing Script', cursive;
+    font-family: Arial, sans-serif;
     overflow: hidden;
-    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
 }
 
 #particles-js {
@@ -87,7 +90,8 @@ body {
     cursor: move;
     user-select: none;
     touch-action: none;
-    transform: translate(0, -50%) scale(0);
+    transform: translate(-50%, -100%) scale(0);
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -99,12 +103,12 @@ body {
 
 .message.show {
     opacity: 1;
-    transform: translate(0, -50%) scale(1);
+    transform: translate(-50%, -100%) scale(1);
 }
 
 .message.hide {
     opacity: 0;
-    transform: translate(0, -50%) scale(0);
+    transform: translate(-50%, -100%) scale(0);
 }
 
 .love-particles {
