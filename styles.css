@@ -40,7 +40,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    cursor: move;
+    cursor: pointer;
     z-index: 3;
     font-size: 3em;
     display: flex;
@@ -50,6 +50,7 @@ body {
     transform: translate(-50%, -50%);
     animation: peek 3s ease-in-out infinite;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
 .cat:not([style*="transform: translate"]) {
