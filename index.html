@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gattino Interattivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #0a0a1a 100%);
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            touch-action: none;
+        }
+
+        .cat {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            cursor: move;
+            z-index: 3;
+            font-size: 3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+            animation: peek 3s ease-in-out infinite;
+        }
+
+        @media (min-width: 768px) {
+            .cat {
+                width: 120px;
+                height: 140px;
+                font-size: 4em;
+            }
+        }
+
+        .cat:active {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        @keyframes peek {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            25% { transform: translate(-50%, -50%) translateY(-20px); }
+            50% { transform: translate(-50%, -50%) translateY(0); }
+            75% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+
+        .message {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+            border-radius: 20px;
+            display: block;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 4;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 80%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .message {
+                font-size: 1.8em;
+                padding: 15px 30px;
+            }
+        }
+
+        .message.show {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+
+        .message.hide {
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+        }
+
+        .love-particles {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes love-particle {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="cat" id="cat">🐱</div>
+        <div class="message hide" id="catMessage"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
