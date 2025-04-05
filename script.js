@@ -98,6 +98,12 @@ interact('.cat')
     })
     .on('tap', function(event) {
         showRandomCatMessage();
+    })
+    .on('doubletap', function(event) {
+        event.preventDefault();
+        // Resetta lo zoom quando si fa doppio tap sull'alieno
+        currentZoom = 1;
+        updateZoom();
     });
 
 // Inizializza il drag and drop per i messaggi
