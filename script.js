@@ -73,35 +73,13 @@ particlesJS({
     }
 });
 
-// Inizializza il drag and drop con supporto touch
+// Aggiungo solo i gestori per tap e doubletap
 interact('.cat')
-    .draggable({
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: 'parent',
-                endOnly: true
-            })
-        ],
-        autoScroll: true,
-        listeners: {
-            start: function(event) {
-                // Ferma l'animazione durante il drag
-                event.target.style.animation = 'none';
-            },
-            move: dragMoveListener,
-            end: function(event) {
-                // Non ripristiniamo più l'animazione dopo il drag
-                // event.target.style.animation = 'peek 3s ease-in-out infinite';
-            }
-        }
-    })
     .on('tap', function(event) {
         showRandomCatMessage();
     })
     .on('doubletap', function(event) {
         event.preventDefault();
-        // Resetta lo zoom quando si fa doppio tap sull'alieno
         currentZoom = 1;
         updateZoom();
     });
