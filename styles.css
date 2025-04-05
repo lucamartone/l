@@ -15,7 +15,7 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     overflow: hidden;
-    touch-action: pinch-zoom;
+    touch-action: manipulation;
 }
 
 #particles-js {
@@ -51,6 +51,7 @@ body {
     animation: peek 3s ease-in-out infinite;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 .cat:not([style*="transform: translate"]) {
