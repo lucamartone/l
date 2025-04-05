@@ -173,8 +173,6 @@ function showRandomCatMessage() {
         const messages = [
             "LARA NUN MOLLA",
             "SALUTAMI SCOOBY",
-            "Se hai bisogno chiamami",
-            "Non vedo l'ora di vederti",
             "TUTTO FVESCO"
         ];
         message = messages[Math.floor(Math.random() * messages.length)];
