@@ -142,7 +142,7 @@ function createLoveParticles(x, y) {
     for (let i = 0; i < 8; i++) {
         const particle = document.createElement('div');
         particle.className = 'love-particles';
-        particle.innerHTML = '❤️';
+        particle.innerHTML = '🦋';
         particle.style.left = x + 'px';
         particle.style.top = y + 'px';
         particle.style.setProperty('--tx', (Math.random() - 0.5) * 150 + 'px');
@@ -162,13 +162,13 @@ function showMessage(messageId, text) {
     message.classList.remove('hide');
     message.classList.add('show');
     
-    // Posiziona il messaggio accanto al gatto
-    const messageX = catRect.left + catRect.width + 20; // 20px di distanza dal gatto
-    const messageY = catRect.top + (catRect.height / 2);
+    // Posiziona il messaggio sopra il gatto
+    const messageX = catRect.left + (catRect.width / 2);
+    const messageY = catRect.top - 20; // 20px sopra il gatto
     
     message.style.left = `${messageX}px`;
     message.style.top = `${messageY}px`;
-    message.style.transform = 'translate(0, -50%) scale(1)';
+    message.style.transform = 'translate(-50%, -100%) scale(1)';
     message.setAttribute('data-x', 0);
     message.setAttribute('data-y', 0);
     
@@ -193,8 +193,11 @@ function showRandomCatMessage() {
         message = "SALUTAMI SCOOBY";
     } else {
         const messages = [
+            "LARA NUN MOLLA",
+            "SALUTAMI SCOOBY",
             "Se hai bisogno chiamami",
-            "Non vedo l'ora di vederti"
+            "Non vedo l'ora di vederti",
+            "TUTTO FVESCO"
         ];
         message = messages[Math.floor(Math.random() * messages.length)];
     }
@@ -202,9 +205,9 @@ function showRandomCatMessage() {
     showMessage('catMessage', message);
 }
 
-// Prevenire lo scroll su iOS
-document.addEventListener('touchmove', function(e) {
-    if (e.target.classList.contains('cat')) {
-        e.preventDefault();
-    }
-}, { passive: false }); 
+// Rimuovo il blocco dello scroll su iOS per permettere lo zoom
+// document.addEventListener('touchmove', function(e) {
+//     if (e.target.classList.contains('cat')) {
+//         e.preventDefault();
+//     }
+// }, { passive: false }); 
