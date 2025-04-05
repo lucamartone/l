@@ -3,7 +3,8 @@ const alienMessages = [
     "LARA NUN MOLLA",
     "SALUTAMI SCOOBY",
     "TUTTO FVESCO",
-    "💞"
+    "♥️",
+    "🕷️"
 ];
 
 // Gestore degli eventi per l'alieno
