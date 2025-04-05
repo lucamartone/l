@@ -198,4 +198,47 @@ function showRandomCatMessage() {
 //     if (e.target.classList.contains('cat')) {
 //         e.preventDefault();
 //     }
-// }, { passive: false }); 
+// }, { passive: false });
+
+// Rimuovo il codice dei pulsanti di zoom e mantengo solo il pinch-to-zoom
+let currentZoom = 1;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 2;
+
+function updateZoom() {
+    const container = document.querySelector('.container');
+    container.style.transform = `scale(${currentZoom})`;
+    container.style.transformOrigin = 'center center';
+}
+
+// Aggiungi il pinch-to-zoom
+let initialDistance = 0;
+let initialZoom = 1;
+
+document.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+        initialDistance = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+        initialZoom = currentZoom;
+    }
+});
+
+document.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+        e.preventDefault();
+        const currentDistance = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+        
+        const scale = currentDistance / initialDistance;
+        const newZoom = initialZoom * scale;
+        
+        if (newZoom >= MIN_ZOOM && newZoom <= MAX_ZOOM) {
+            currentZoom = newZoom;
+            updateZoom();
+        }
+    }
+}, { passive: false }); 
