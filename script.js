@@ -1,15 +1,14 @@
-// Inizializza particles.js con tema Arcane
+// Inizializza particles.js con tema più naturale
 particlesJS({
     particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: ["#00ffff", "#ff00ff", "#ffffff"] },
+        number: { value: 30, density: { enable: true, value_area: 800 } },
+        color: { value: ["#ffffff", "#f0f0f0", "#e0e0e0"] },
         shape: { 
-            type: ["circle", "triangle", "polygon"],
-            stroke: { width: 0, color: "#000000" },
-            polygon: { nb_sides: 6 }
+            type: ["circle"],
+            stroke: { width: 0, color: "#000000" }
         },
         opacity: {
-            value: 0.5,
+            value: 0.3,
             random: true,
             animation: { 
                 enable: true, 
@@ -19,7 +18,7 @@ particlesJS({
             }
         },
         size: {
-            value: 3,
+            value: 2,
             random: true,
             animation: { 
                 enable: true, 
@@ -30,19 +29,14 @@ particlesJS({
         },
         line_linked: {
             enable: true,
-            distance: 150,
-            color: "#00ffff",
-            opacity: 0.4,
-            width: 1,
-            shadow: {
-                enable: true,
-                color: "#00ffff",
-                blur: 5
-            }
+            distance: 200,
+            color: "#ffffff",
+            opacity: 0.1,
+            width: 1
         },
         move: {
             enable: true,
-            speed: 1,
+            speed: 0.5,
             direction: "none",
             random: true,
             straight: false,
@@ -60,24 +54,18 @@ particlesJS({
         events: {
             onhover: { 
                 enable: true, 
-                mode: "repulse",
-                parallax: {
-                    enable: true,
-                    force: 60,
-                    smooth: 10
-                }
+                mode: "repulse"
             },
             onclick: { 
                 enable: true, 
-                mode: "push",
-                particles_nb: 4
+                mode: "push"
             },
             resize: true
         }
     },
     retina_detect: true,
     background: {
-        color: "#0a0a1a",
+        color: "#f5f5f5",
         image: "",
         position: "50% 50%",
         repeat: "no-repeat",
@@ -139,10 +127,10 @@ function dragMoveListener(event) {
 }
 
 function createLoveParticles(x, y) {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 10; i++) {
         const particle = document.createElement('div');
         particle.className = 'love-particles';
-        particle.innerHTML = '🦋';
+        particle.innerHTML = '💞';
         particle.style.left = x + 'px';
         particle.style.top = y + 'px';
         particle.style.setProperty('--tx', (Math.random() - 0.5) * 150 + 'px');
